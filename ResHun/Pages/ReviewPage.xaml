@@ -1,0 +1,21 @@
+﻿<Page x:Class="ResHun.Pages.ReviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ResHun.Pages"
+      mc:Ignorable="d" 
+       d:DesignHeight="450" d:DesignWidth="800"
+      Title="ReviewPage">
+
+    <Grid Background="Black">
+        <Image Margin="104,24,195,0" Source="/ResHun;component/img/image 4 (1).png" Stretch="Fill" Opacity="0.6"/>
+        <Image Margin="72,120,430,72" Source="/ResHun;component/img/Rectangle 20.png" Stretch="Fill"/>
+        <Image Margin="423,120,79,72" Source="/ResHun;component/img/Rectangle 20.png" Stretch="Fill"/>
+        <Label Content="Фамилия Имя" HorizontalAlignment="Left" Margin="90,133,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Label Content="Фамилия Имя" HorizontalAlignment="Left" Margin="441,131,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Label Content="Отзыв" HorizontalAlignment="Left" Margin="90,170,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Отзыв" HorizontalAlignment="Left" Margin="442,168,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="ОТЗЫВЫ" HorizontalAlignment="Left" Margin="341,24,0,0" VerticalAlignment="Top" FontSize="22" Foreground="White" FontWeight="Bold" Height="40"/>
+    </Grid>
+</Page>
