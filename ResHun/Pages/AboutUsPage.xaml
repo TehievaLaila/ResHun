@@ -1,4 +1,4 @@
-﻿<Window x:Class="ResHun.Pages.AboutUsPage"
+﻿<Page x:Class="ResHun.Pages.AboutUsPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,4 +27,4 @@
         <Image Margin="230,339,288,7" Source="/ResHun;component/img/image 21.png" Stretch="Fill"/>
         <Image Margin="519,339,257,7" Source="/ResHun;component/img/image 22.png" Stretch="Fill"/>
     </Grid>
-</Window>
+</Page>

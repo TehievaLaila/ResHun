@@ -47,6 +47,16 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="ID_Supliers" Type="int" />
         </EntityType>
+        <EntityType Name="OrderDish">
+          <Key>
+            <PropertyRef Name="ID_OrderDish" />
+          </Key>
+          <Property Name="ID_OrderDish" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Count" Type="int" />
+          <Property Name="ID_User" Type="int" />
+          <Property Name="ID_Dishes" Type="int" />
+        </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="ID_Post" />
@@ -68,13 +78,22 @@
           <Key>
             <PropertyRef Name="ID_Reservation" />
           </Key>
-          <Property Name="ID_Reservation" Type="int" Nullable="false" />
+          <Property Name="ID_Reservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="Date" Type="date" />
-          <Property Name="Time" Type="int" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Time" Type="varchar" MaxLength="50" />
           <Property Name="NumberOrPersons" Type="int" />
           <Property Name="Event" Type="varchar" MaxLength="50" />
+          <Property Name="ID_User" Type="int" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ID_Review" />
+          </Key>
+          <Property Name="ID_Review" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
           <Property Name="ID_User" Type="int" />
         </EntityType>
         <EntityType Name="Role">
@@ -197,6 +216,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDish_Dishes">
+          <End Role="Dishes" Type="Self.Dishes" Multiplicity="0..1" />
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dishes">
+              <PropertyRef Name="ID_Dishes" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="ID_Dishes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDish_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Supliers">
           <End Role="Supliers" Type="Self.Supliers" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -221,14 +264,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Review_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dishes" EntityType="Self.Dishes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meat" EntityType="Self.Meat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDish" EntityType="Self.OrderDish" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supliers" EntityType="Self.Supliers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -261,6 +318,14 @@
             <End Role="Supliers" EntitySet="Supliers" />
             <End Role="Meat" EntitySet="Meat" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_Dishes" Association="Self.FK_OrderDish_Dishes">
+            <End Role="Dishes" EntitySet="Dishes" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_User" Association="Self.FK_OrderDish_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Supliers" Association="Self.FK_Products_Supliers">
             <End Role="Supliers" EntitySet="Supliers" />
             <End Role="Products" EntitySet="Products" />
@@ -268,6 +333,10 @@
           <AssociationSet Name="FK_Reservation_User" Association="Self.FK_Reservation_User">
             <End Role="User" EntitySet="User" />
             <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -301,6 +370,7 @@
           <Property Name="ID_Meat" Type="Int32" />
           <NavigationProperty Name="Employe" Relationship="Self.FK_Dishes_Employe" FromRole="Dishes" ToRole="Employe" />
           <NavigationProperty Name="Meat" Relationship="Self.FK_Dishes_Meat" FromRole="Dishes" ToRole="Meat" />
+          <NavigationProperty Name="OrderDish" Relationship="Self.FK_OrderDish_Dishes" FromRole="Dishes" ToRole="OrderDish" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
@@ -327,6 +397,18 @@
           <NavigationProperty Name="Dishes" Relationship="Self.FK_Dishes_Meat" FromRole="Meat" ToRole="Dishes" />
           <NavigationProperty Name="Supliers" Relationship="Self.FK_Meat_Supliers" FromRole="Meat" ToRole="Supliers" />
         </EntityType>
+        <EntityType Name="OrderDish">
+          <Key>
+            <PropertyRef Name="ID_OrderDish" />
+          </Key>
+          <Property Name="ID_OrderDish" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="ID_User" Type="Int32" />
+          <Property Name="ID_Dishes" Type="Int32" />
+          <NavigationProperty Name="Dishes" Relationship="Self.FK_OrderDish_Dishes" FromRole="OrderDish" ToRole="Dishes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_OrderDish_User" FromRole="OrderDish" ToRole="User" />
+        </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="ID_Post" />
@@ -350,15 +432,25 @@
           <Key>
             <PropertyRef Name="ID_Reservation" />
           </Key>
-          <Property Name="ID_Reservation" Type="Int32" Nullable="false" />
+          <Property Name="ID_Reservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Time" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NumberOrPersons" Type="Int32" />
           <Property Name="Event" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ID_User" Type="Int32" />
           <NavigationProperty Name="User" Relationship="Self.FK_Reservation_User" FromRole="Reservation" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ID_Review" />
+          </Key>
+          <Property Name="ID_Review" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_User" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -399,7 +491,9 @@
           <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Authorization" Relationship="Self.FK_Authorization_User" FromRole="User" ToRole="Authorization" />
+          <NavigationProperty Name="OrderDish" Relationship="Self.FK_OrderDish_User" FromRole="User" ToRole="OrderDish" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_User" FromRole="User" ToRole="Reservation" />
+          <NavigationProperty Name="Review" Relationship="Self.FK_Review_User" FromRole="User" ToRole="Review" />
         </EntityType>
         <Association Name="FK_Authorization_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
@@ -461,6 +555,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDish_Dishes">
+          <End Role="Dishes" Type="Self.Dishes" Multiplicity="0..1" />
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dishes">
+              <PropertyRef Name="ID_Dishes" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="ID_Dishes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employe_Post">
           <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
           <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
@@ -482,6 +588,18 @@
             </Principal>
             <Dependent Role="Meat">
               <PropertyRef Name="ID_Supliers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDish_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="ID_User" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -509,14 +627,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Review_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authorization" EntityType="Self.Authorization" />
           <EntitySet Name="Dishes" EntityType="Self.Dishes" />
           <EntitySet Name="Employe" EntityType="Self.Employe" />
           <EntitySet Name="Meat" EntityType="Self.Meat" />
+          <EntitySet Name="OrderDish" EntityType="Self.OrderDish" />
           <EntitySet Name="Post" EntityType="Self.Post" />
           <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" />
+          <EntitySet Name="Review" EntityType="Self.Review" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Supliers" EntityType="Self.Supliers" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -541,6 +673,10 @@
             <End Role="Meat" EntitySet="Meat" />
             <End Role="Dishes" EntitySet="Dishes" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_Dishes" Association="Self.FK_OrderDish_Dishes">
+            <End Role="Dishes" EntitySet="Dishes" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employe_Post" Association="Self.FK_Employe_Post">
             <End Role="Post" EntitySet="Post" />
             <End Role="Employe" EntitySet="Employe" />
@@ -549,6 +685,10 @@
             <End Role="Supliers" EntitySet="Supliers" />
             <End Role="Meat" EntitySet="Meat" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_User" Association="Self.FK_OrderDish_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Supliers" Association="Self.FK_Products_Supliers">
             <End Role="Supliers" EntitySet="Supliers" />
             <End Role="Products" EntitySet="Products" />
@@ -556,6 +696,10 @@
           <AssociationSet Name="FK_Reservation_User" Association="Self.FK_Reservation_User">
             <End Role="User" EntitySet="User" />
             <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -610,6 +754,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="OrderDish">
+            <EntityTypeMapping TypeName="Model.OrderDish">
+              <MappingFragment StoreEntitySet="OrderDish">
+                <ScalarProperty Name="ID_OrderDish" ColumnName="ID_OrderDish" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="ID_Dishes" ColumnName="ID_Dishes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="Model.Post">
               <MappingFragment StoreEntitySet="Post">
@@ -639,6 +794,16 @@
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="NumberOrPersons" ColumnName="NumberOrPersons" />
                 <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Review">
+            <EntityTypeMapping TypeName="Model.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ID_Review" ColumnName="ID_Review" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ID_User" ColumnName="ID_User" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -29,9 +29,11 @@ namespace ResHun.db
         public DbSet<Dishes> Dishes { get; set; }
         public DbSet<Employe> Employe { get; set; }
         public DbSet<Meat> Meat { get; set; }
+        public DbSet<OrderDish> OrderDish { get; set; }
         public DbSet<Post> Post { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Reservation> Reservation { get; set; }
+        public DbSet<Review> Review { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Supliers> Supliers { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }

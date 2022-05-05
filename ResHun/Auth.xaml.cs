@@ -79,9 +79,12 @@ namespace ResHun
             }
             else
             {
+                string[] ss = name.Text.Split(' ');
                 User users = new User();
                 {
-                    users.Name = name.Text;
+                    users.Name = ss[1];
+                    users.FirstName = ss[0];
+                    users.LastName = ss[2];
                     users.Phone = phone.Text;
                 }
                 dba.User.Add(users);

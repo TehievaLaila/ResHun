@@ -17,5 +17,6 @@ namespace ResHun
         public static Entities en = new Entities();
         public static Authorization user = new Authorization();
         public static Dishes dish = new Dishes();
+
     }
 }

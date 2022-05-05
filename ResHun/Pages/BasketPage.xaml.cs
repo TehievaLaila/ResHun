@@ -23,6 +23,13 @@ namespace ResHun.Pages
         public BasketPage()
         {
             InitializeComponent();
+            GetOrders();
         }
+        public void GetOrders()
+        {
+            Ords.ItemsSource = App.en.OrderDish.ToList();
+        }
+
+
     }
 }

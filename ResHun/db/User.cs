@@ -17,7 +17,9 @@ namespace ResHun.db
         public User()
         {
             this.Authorization = new HashSet<Authorization>();
+            this.OrderDish = new HashSet<OrderDish>();
             this.Reservation = new HashSet<Reservation>();
+            this.Review = new HashSet<Review>();
         }
     
         public int ID_User { get; set; }
@@ -28,6 +30,8 @@ namespace ResHun.db
         public byte[] Image { get; set; }
     
         public virtual ICollection<Authorization> Authorization { get; set; }
+        public virtual ICollection<OrderDish> OrderDish { get; set; }
         public virtual ICollection<Reservation> Reservation { get; set; }
+        public virtual ICollection<Review> Review { get; set; }
     }
 }

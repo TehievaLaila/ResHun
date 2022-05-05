@@ -17,8 +17,8 @@ namespace ResHun.db
         public int ID_Reservation { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> Time { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
         public Nullable<int> NumberOrPersons { get; set; }
         public string Event { get; set; }
         public Nullable<int> ID_User { get; set; }

@@ -11,6 +11,13 @@
     <Grid>
         <Image Source="/ResHun;component/img/scre.JPG" Stretch="Fill" Margin="1,0,-1,0"/>
         <Label Content="МОЙ ЗАКАЗ" HorizontalAlignment="Left" Margin="354,99,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="14" FontWeight="Bold"/>
-        <Button Content="заказать" Style="{DynamicResource ButtonStyle1}" HorizontalAlignment="Left" Height="22" Margin="354,284,0,0" VerticalAlignment="Top" Width="89" Background="Red" BorderBrush="{x:Null}" Foreground="White" FontSize="14"/>
+        <ListView x:Name="Ords" HorizontalAlignment="Left" Height="152" Margin="258,137,0,0" VerticalAlignment="Top" Width="288" Background="#FFD8D8D8">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Блюдо"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="Цена"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

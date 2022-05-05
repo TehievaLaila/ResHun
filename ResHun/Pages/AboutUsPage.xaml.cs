@@ -17,7 +17,7 @@ namespace ResHun.Pages
     /// <summary>
     /// Логика взаимодействия для AboutUsPage.xaml
     /// </summary>
-    public partial class AboutUsPage : Window
+    public partial class AboutUsPage : Page
     {
         public AboutUsPage()
         {

@@ -32,5 +32,30 @@ namespace ResHun
             this.Close();
 
         }
+
+        private void men_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Авторизируйтесь пожалуйста!");
+        }
+
+        private void bro_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Авторизируйтесь пожалуйста!");
+        }
+
+        private void abou_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Авторизируйтесь пожалуйста!");
+        }
+
+        private void revi_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Авторизируйтесь пожалуйста!");
+        }
+
+        private void cont_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Авторизируйтесь пожалуйста!");
+        }
     }
 }

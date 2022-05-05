@@ -9,13 +9,32 @@
       Title="ReviewPage">
 
     <Grid Background="Black">
-        <Image Margin="104,24,195,0" Source="/ResHun;component/img/image 4 (1).png" Stretch="Fill" Opacity="0.6"/>
-        <Image Margin="72,120,430,72" Source="/ResHun;component/img/Rectangle 20.png" Stretch="Fill"/>
-        <Image Margin="423,120,79,72" Source="/ResHun;component/img/Rectangle 20.png" Stretch="Fill"/>
-        <Label Content="Фамилия Имя" HorizontalAlignment="Left" Margin="90,133,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Label Content="Фамилия Имя" HorizontalAlignment="Left" Margin="441,131,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Label Content="Отзыв" HorizontalAlignment="Left" Margin="90,170,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Отзыв" HorizontalAlignment="Left" Margin="442,168,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Image Margin="104,24,195,0" Source="/ResHun;component/img/image 4 (1).png" Stretch="Fill" Opacity="0.6" Grid.RowSpan="2"/>
+        <Image Margin="72,120,430,72" Source="/ResHun;component/img/Rectangle 20.png" Stretch="Fill" Grid.RowSpan="2"/>
+        <Image Margin="423,120,79,72" Source="/ResHun;component/img/Rectangle 20.png" Stretch="Fill" Grid.RowSpan="2"/>
+        <Label x:Name="NameNa" Content="Фамилия Имя" HorizontalAlignment="Left" Margin="90,133,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Label x:Name="NameName" Content="Фамилия Имя" HorizontalAlignment="Left" Margin="441,131,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Label x:Name="WriteReview" Content="Отзыв" HorizontalAlignment="Left" Margin="90,170,0,0" VerticalAlignment="Top" FontSize="14" Width="250" Height="145" Grid.RowSpan="2"/>
+        <Label x:Name="Destr" Content="Отзыв" HorizontalAlignment="Left" Margin="442,168,0,0" VerticalAlignment="Top" FontSize="14" Width="256" Height="181"/>
         <Label Content="ОТЗЫВЫ" HorizontalAlignment="Left" Margin="341,24,0,0" VerticalAlignment="Top" FontSize="22" Foreground="White" FontWeight="Bold" Height="40"/>
+        <Button x:Name="Write" Style="{DynamicResource ButtonStyle1}" Content="написать" HorizontalAlignment="Left" Height="40" Margin="631,24,0,0" VerticalAlignment="Top" Width="116" Background="Red" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontWeight="Bold" Click="Write_Click"/>
+        <Button x:Name="Left" HorizontalAlignment="Left" Height="54" Margin="9,216,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" BorderBrush="{x:Null}" Click="Left_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush ImageSource="Vector (1).png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Right" HorizontalAlignment="Left" Height="54" Margin="739,220,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Click="Right_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Vector (1).png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

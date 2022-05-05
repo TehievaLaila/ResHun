@@ -31,11 +31,11 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button Style="{DynamicResource ButtonStyle1}" Content="меню" HorizontalAlignment="Left" Margin="206,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand"/>
-        <Button Style="{DynamicResource ButtonStyle1}" Content="бронь" HorizontalAlignment="Left" Margin="276,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand"/>
-        <Button Style="{DynamicResource ButtonStyle1}" Content="о нас" HorizontalAlignment="Left" Margin="344,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand"/>
-        <Button Style="{DynamicResource ButtonStyle1}" Content="отзывы" HorizontalAlignment="Left" Margin="416,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand"/>
-        <Button Style="{DynamicResource ButtonStyle1}" Content="контакты" HorizontalAlignment="Left" Margin="498,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand"/>
+        <Button x:Name="men" Style="{DynamicResource ButtonStyle1}" Content="меню" HorizontalAlignment="Left" Margin="206,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="men_Click"/>
+        <Button x:Name="bro" Style="{DynamicResource ButtonStyle1}" Content="бронь" HorizontalAlignment="Left" Margin="276,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="bro_Click"/>
+        <Button x:Name="abou" Style="{DynamicResource ButtonStyle1}" Content="о нас" HorizontalAlignment="Left" Margin="344,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="abou_Click"/>
+        <Button x:Name="revi" Style="{DynamicResource ButtonStyle1}" Content="отзывы" HorizontalAlignment="Left" Margin="416,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="revi_Click"/>
+        <Button x:Name="cont" Style="{DynamicResource ButtonStyle1}" Content="контакты" HorizontalAlignment="Left" Margin="498,8,0,0" VerticalAlignment="Top" Width="75" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" Click="cont_Click"/>
 
     </Grid>
 </Window>

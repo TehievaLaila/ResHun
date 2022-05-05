@@ -12,23 +12,13 @@ namespace ResHun.db
     using System;
     using System.Collections.Generic;
     
-    public partial class Dishes
+    public partial class Review
     {
-        public Dishes()
-        {
-            this.OrderDish = new HashSet<OrderDish>();
-        }
-    
-        public int ID_Dishes { get; set; }
+        public int ID_Review { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> ID_Employe { get; set; }
-        public byte[] Image { get; set; }
-        public Nullable<int> ID_Meat { get; set; }
+        public Nullable<int> ID_User { get; set; }
     
-        public virtual Employe Employe { get; set; }
-        public virtual Meat Meat { get; set; }
-        public virtual ICollection<OrderDish> OrderDish { get; set; }
+        public virtual User User { get; set; }
     }
 }
