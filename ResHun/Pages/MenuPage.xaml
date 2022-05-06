@@ -61,8 +61,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Label Content="Label" HorizontalAlignment="Left" Height="31" Margin="309,139,0,0" VerticalAlignment="Top" Width="37"/>
-        <Label Content="Label" HorizontalAlignment="Left" Height="31" Margin="638,139,0,0" VerticalAlignment="Top" Width="37"/>
+        <Label x:Name="Fir" HorizontalAlignment="Left" Height="31" Margin="309,139,0,0" VerticalAlignment="Top" Width="37"/>
+        <Label x:Name="thr" HorizontalAlignment="Left" Height="31" Margin="638,139,0,0" VerticalAlignment="Top" Width="37"/>
 
 
     </Grid>

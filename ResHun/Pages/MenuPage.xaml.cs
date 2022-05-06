@@ -33,29 +33,24 @@ namespace ResHun.Pages
             ResHun.db.Dishes dish = new ResHun.db.Dishes();
             try
             {
-                mydisheslist = App.en.Dishes.ToList();
-                for (int i = 0; i < 2; i++)
-                {
+                var lst1 = from cust in App.en.Dishes
+                           where cust.ID_Dishes == x
+                           select cust;
+                var lst2 = from cust in App.en.Dishes
+                           where cust.ID_Dishes == x + 1
+                           select cust;
 
-                }
-                //var lst1 = from cust in App.en.Dishes
-                //           where cust.ID_Dishes == x
-                //           select cust;
-                //var lst2 = from cust in App.en.Dishes
-                //           where cust.ID_Dishes == x + 1
-                //           select cust;
+                Nam.Content = lst1.First().Name;
+                Mee.Content = lst1.First().ID_Dishes;
+                Descrip.Text = lst1.First().Description;
+                Pri.Content = lst1.First().Price;
+                Fir.Content = lst1.First().ID_Meat;
 
-                //Nam.Content = lst1.First().Name;
-                //Mee.Content = lst1.First().ID_Dishes;
-                //Descrip.Text = lst1.First().Description;
-                //Pri.Content = lst1.First().Price;
-                //Fir.Content = lst1.First().ID_Meat;
-
-                //Nana.Content = lst2.First().Name;
-                //Meme.Content = lst2.First().ID_Dishes;
-                //desdes.Text = lst2.First().Description;
-                //pripri.Content = lst2.First().Price;
-                //thr.Content = lst2.First().ID_Meat;
+                Nana.Content = lst2.First().Name;
+                Meme.Content = lst2.First().ID_Dishes;
+                desdes.Text = lst2.First().Description;
+                pripri.Content = lst2.First().Price;
+                thr.Content = lst2.First().ID_Meat;
             }
             catch { }
         }
